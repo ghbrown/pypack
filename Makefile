@@ -60,3 +60,4 @@ clean:
 # 3. $ python3 setup.py bdist_wheel
 # 4. $ python -m twine upload dist/*
 
+#For a full guide see DZone's "Build your first pip package"
