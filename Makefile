@@ -45,11 +45,14 @@ sandbox:
 	deactivate; \
 	)
 
-#build Python package
+#install package locally (user/non-venv environment) in editable form
 local-install:
-	@rm dist/*
-	@python setup.py bdist_wheel
-	@python -m pip install dist/
+	@pip uninstall $(PACKNAME)
+	@pip install -e .
+
+#uninstall editable package from user/non-venv environment
+local-uninstall:
+	@pip uninstall $(PACKNAME)
 
 #print TODO notes to terminal
 todo:
