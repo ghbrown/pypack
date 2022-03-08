@@ -45,6 +45,12 @@ sandbox:
 	deactivate; \
 	)
 
+#build Python package
+local-install:
+	@rm dist/*
+	@python setup.py bdist_wheel
+	@python -m pip install dist/
+
 #print TODO notes to terminal
 todo:
 	grep -r "TODO" $(PACKNAME) $(TESTDIR)
@@ -53,11 +59,13 @@ todo:
 clean:
 	@\rm -rf test_venv
 
+#STEPS TO CREATE PYTHON PACKAGE
+#(for full guide see DZone's "Build your first pip package")
+# 0.  create setup.py file (already included, just fill appropriately)
+# 0.1 address bin/<PACKAGE_NAME> executable (just rename)
+# 1. python setup.py bdist_wheel
+# 2. ensure ~/.pyirc file exists
+# 3. $ python -m twine upload dist/*
+# if updating, before step 1: bump version number
+#                             clear dist/* of old versions
 
-#STEPS TO UPDATE PYTHON PACKAGE
-# 1. bump version number
-# 2. make sure dist is clear of old version(s) (move to old_dist)
-# 3. $ python3 setup.py bdist_wheel
-# 4. $ python -m twine upload dist/*
-
-#For a full guide see DZone's "Build your first pip package"
