@@ -56,7 +56,7 @@ local-uninstall:
 
 #print TODO notes to terminal
 todo:
-	grep -r "TODO" $(PACKNAME) $(TESTDIR)
+	grep -r -i "todo" $(PACKNAME) $(TESTDIR)
 
 #remove virtual environment
 clean:
